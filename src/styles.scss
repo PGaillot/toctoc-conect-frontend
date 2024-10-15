@@ -1,21 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
-
+$red: #F22929;
+$brown: #8C4820;
+$orange: #BF712C;
+$dark-brown: #594834;
+$dark: #3a3024;
+$light-orange: #D9933D;
+$white: #ffd9aa;
 
   @font-face {
     font-family: 'Sora';
     src: url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 }
 
-
-
-#main{
-  width: 500px;
+body{
+  background: $orange;
+  color: $white;
 }
 
 * {
   font-family: 'Sora', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+section{
+  margin-top: 40px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  h1{
+    align-self: center;
+  }
+}
+
+button{
+  padding: 12px 32px;
+  font-weight: 800;
+  background: $light-orange;
+  border: none;
+  border-radius: 12px;
+  color: $dark;
+}
+h1{
+  font-size: 40px;
 }
 
 h1, h2, h3, h4, h5, h6 {
