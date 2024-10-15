@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+
+  @font-face {
+    font-family: 'Sora';
+    src: url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+}
+
+
+
+#main{
+  width: 500px;
+}
+
+* {
+  font-family: 'Sora', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+}
