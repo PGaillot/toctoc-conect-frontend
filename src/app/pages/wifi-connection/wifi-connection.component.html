@@ -1,0 +1,25 @@
+<section>
+    <h1>Aidez nous à trouver votre wifi</h1>
+
+
+    @defer (when networks.length > 0) {
+    @for (network of networks; track $index) {
+    <div class="network">
+        <h3>{{ network.ssid }}</h3>
+        <p>Power: {{ network.power }}</p>
+        <p>Security: {{ network.security }}</p>
+    </div>
+    }
+    }
+    @placeholder {
+    <div class="network">
+        @if(loading) {
+        <p>Chargement...</p>
+        } @else {
+        <p>Aucun résultat</p>
+        }
+    </div>
+    }
+
+    <button (click)="refresh()">rafraichir</button>
+</section>
