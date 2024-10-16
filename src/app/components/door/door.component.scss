@@ -1,0 +1,20 @@
+@import '../../../styles.scss';
+
+#door{
+    background-color: $dark-brown;
+    height: 325px;
+    width: 200px;
+    border-radius: 12px;
+
+    #knob{
+        background-color: $orange;
+        border: 6px solid $light-orange;
+        height: 18px;
+        width: 18px;
+        border-radius: 100%;
+        position: relative;
+        top: 50%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+    }
+}
