@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Network } from '../pages/wifi-connection/wifi-connection.component';
+import { WifiNetwork } from '../models/wifiNetwork.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ export class NetworkService {
 
   constructor(private http: HttpClient) {}
 
-  getNetworks(): Observable<Network[]> {
-    return this.http.get<Network[]>(`${this.apiUrl}/wifi`);
+  getNetworks(): Observable<WifiNetwork[]> {
+    return this.http.get<WifiNetwork[]>(`${this.apiUrl}/wifi`);
   }
 }

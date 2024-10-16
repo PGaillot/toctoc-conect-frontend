@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 import { NetworkService } from '../../services/network.service';
-
-export interface Network {
-  ssid: string;
-  power: number;
-  security: string;
-}
+import { WifiNetwork } from '../../models/wifiNetwork.model';
 
 @Component({
   selector: 'app-wifi-connection',
@@ -15,7 +10,7 @@ export interface Network {
   styleUrl: './wifi-connection.component.scss',
 })
 export class WifiConnectionComponent {
-  networks: Network[] = [];
+  networks: WifiNetwork[] = [];
   loading: boolean = false;
 
   constructor(private networkService: NetworkService) {}
