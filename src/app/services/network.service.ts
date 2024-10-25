@@ -7,7 +7,7 @@ import { WifiNetwork } from '../models/wifiNetwork.model';
   providedIn: 'root',
 })
 export class NetworkService {
-  apiUrl: string = 'http://127.0.0.1:5000'; // local url generate by flask.
+  apiUrl: string = 'http://192.168.4.1/api/'; // local url generate by flask.
 
   constructor(private http: HttpClient) {}
 
