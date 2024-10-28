@@ -12,7 +12,7 @@
     }
     }
     @placeholder {
-    <div class="network">
+    <div class="network no-network">
         @if(loading) {
         <p>Chargement...</p>
         } @else {
@@ -21,5 +21,5 @@
     </div>
     }
 
-    <button (click)="refresh()">rafraichir</button>
+    <button (click)="refresh()" [disabled]="loading">rafraichir</button>
 </section>

@@ -60,4 +60,11 @@ button{
     background: $brown;
     color: $white;
   }
+
+  &:disabled{
+    background: $dark-brown;
+    opacity: 0.3;
+    color: $white;
+    cursor: not-allowed;
+  }
 }
