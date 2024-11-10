@@ -1,4 +1,15 @@
 <div id="main">
-    <app-door></app-door>
+
+    <header>
+        <ng-lottie 
+        id="door"
+        [options]="options" 
+        width="500px" 
+        height="300px" 
+        (animationCreated)="animationCreated($event)" />
+    </header>
+
+
+
     <router-outlet></router-outlet>
 </div>
