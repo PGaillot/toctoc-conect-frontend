@@ -1,21 +1,22 @@
 <section>
     <h1>Aidez nous à trouver votre wifi</h1>
 
-
-    @defer (when networks.length > 0) {
-    @for (network of networks; track $index) {
-        <app-network [network]="network"></app-network>
-    }
-    }
-    @placeholder {
-    <div class="network no-network">
-        @if(loading) {
-        <p>Chargement...</p>
-        } @else {
-        <p>Aucun résultat</p>
+    <div id="networks-container">
+        @defer (when networks.length > 0) {
+            @for (network of networks; track $index) {
+                <app-network [network]="network"></app-network>
+            }
+        }
+        @placeholder {
+            <div class="network no-network">
+                @if(loading) {
+                    <p>Chargement...</p>
+                } @else {
+                    <p>Aucun résultat</p>
+                }
+            </div>
         }
     </div>
-    }
 
     <button (click)="refresh()" [disabled]="loading">rafraichir</button>
 </section>

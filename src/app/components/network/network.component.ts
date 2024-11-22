@@ -12,16 +12,17 @@ const visible = {
   opacity: '1'
 }
  const timing = '0.2s ease-in'
+
 @Component({
   selector: 'app-network',
   standalone: true,
   imports: [],
   template: `
-<div @appear class="network">
-  <h3>{{ network.ssid }}</h3>
-  <p>quality: {{ network.quality }}</p>
-  <p>Security: {{ network.security }}</p>
-</div>`,
+  <div @appear class="network">
+    <h3>{{ network.ssid }}</h3>
+    <p>quality: {{ network.quality }}</p>
+    <p>Security: {{ network.security }}</p>
+  </div>`,
   styleUrl: './network.component.scss',
   animations: [
     trigger('appear', [
