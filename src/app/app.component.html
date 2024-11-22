@@ -8,5 +8,7 @@
         height="300px" 
         (animationCreated)="animationCreated($event)" />
     </header>
-    <router-outlet></router-outlet>
+    <div [@routeTransition]="route.snapshot.data" style="display: contents; position: relative;">
+        <router-outlet></router-outlet>
+    </div>
 </div>

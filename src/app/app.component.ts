@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'lottie-web';
+import { routeTransition } from '../route-transition';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, LottieComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  animations:[
+    routeTransition
+  ]
 })
 export class AppComponent {
   title = 'toctoc-conect';
@@ -20,6 +24,9 @@ export class AppComponent {
     autoplay: true
   };
 
+  constructor(
+    protected route:ActivatedRoute
+  ){}
 
   animationCreated(animationItem: AnimationItem): void {
     this.animationItem = animationItem;
