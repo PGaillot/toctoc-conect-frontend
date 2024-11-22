@@ -4,11 +4,7 @@
 
     @defer (when networks.length > 0) {
     @for (network of networks; track $index) {
-    <div class="network">
-        <h3>{{ network.ssid }}</h3>
-        <p>quality: {{ network.quality }}</p>
-        <p>Security: {{ network.security }}</p>
-    </div>
+        <app-network [network]="network"></app-network>
     }
     }
     @placeholder {
