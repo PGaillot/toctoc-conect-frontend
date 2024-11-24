@@ -1,10 +1,10 @@
 <section>
     <h1>Connectez vous à {{network?.ssid}}</h1>
     @if (network) {
-        <form [formGroup]="passwordForm">
+        <form [formGroup]="passwordForm" (submit)="tryConnection()">
             <label for="password">Entrez le mot de passe de votre wifi</label>
             <input formControlName="password" type="password" name="password" id="password">
-            <button type="submit" [disabled]="passwordForm.invalid">c'est partit !</button>
+            <button type="submit" [disabled]="passwordForm.invalid" >c'est partit !</button>
         </form>
     } @else {
         <p>Oups ! Wifi network error...</p>        

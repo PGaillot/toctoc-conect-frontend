@@ -27,6 +27,10 @@ export class WifiConnectionLogComponent {
     } 
   }
 
+  tryConnection():void{
+    const password:string | undefined = this.passwordForm.get('password')?.value;
+    this.router.navigate(['wifi-connection-pending'], {state:{password:password}})
+  }
 
 
 }
