@@ -1,5 +1,5 @@
 export interface WifiNetwork {
   ssid: string;
-  quality: string;
+  quality: number;
   security: string;
 }

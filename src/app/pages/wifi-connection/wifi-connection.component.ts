@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NetworkService } from '../../services/network.service';
 import { WifiNetwork } from '../../models/wifiNetwork.model';
 import { NetworkComponent } from "../../components/network/network.component";
-import { interval, take } from 'rxjs';
+import { interval, Observable, Subscription, take } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class WifiConnectionComponent {
 
+  subcriptions:Subscription[] = []
   networks: WifiNetwork[] = [];
   loading: boolean = false;
 
@@ -47,20 +48,25 @@ export class WifiConnectionComponent {
     ]
     return {
       ssid: ssids[this.getRandomNum(ssids.length - 1)],
-      quality: this.getRandomNum(5).toString(),
+      quality: this.getRandomNum(5),
       security: security[this.getRandomNum(security.length - 1)]
     }
   }
 
   ngOnInit(): void {
     this.refresh();
-    const newtworkInterval = interval(2000);
-    const countNumber = newtworkInterval.pipe(take(20));
-    countNumber.subscribe((count: number) => this.networks.push(this.createNetwork()));
+  }
+
+  ngOnDestroy():void{
+
   }
 
   refresh() {
-    this.loading = true;
+    // this.loading = true;
+
+    // For test
+    this.fakeRefresh();
+
     this.networkService
       .getNetworks()
       .subscribe({
@@ -77,7 +83,25 @@ export class WifiConnectionComponent {
       .unsubscribe();
   }
 
+  fakeRefresh():void{
+    const newtworkInterval:Observable<number> = interval(2000);
+    const countNumber:Observable<number> = newtworkInterval.pipe(take(8));
+    this.subcriptions.forEach(((sub:Subscription) => sub.unsubscribe()))
+    this.networks = []
+    this.subcriptions = [
+      ...this.subcriptions, 
+      countNumber.subscribe((count: number) => {
+        this.networks.push(this.createNetwork());
+        this.networks.sort((a:WifiNetwork, b:WifiNetwork) => b.quality - a.quality )
+      })
+    ]
+  }
+
   navToNetwork(network: WifiNetwork) {
     this.router.navigate(['wifi-log', network.ssid], { state: { network: network } })
+  }
+
+  backHome():void{
+    this.router.navigateByUrl('/')
   }
 }
