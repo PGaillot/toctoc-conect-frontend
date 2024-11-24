@@ -4,7 +4,7 @@
     <div id="networks-container">
         @defer (when networks.length > 0) {
             @for (network of networks; track $index) {
-                <app-network [network]="network"></app-network>
+                <app-network [network]="network" (onClick)="navToNetwork(network)"></app-network>
             }
         }
         @placeholder {

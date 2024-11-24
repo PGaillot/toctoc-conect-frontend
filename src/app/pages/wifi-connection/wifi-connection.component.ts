@@ -3,6 +3,7 @@ import { NetworkService } from '../../services/network.service';
 import { WifiNetwork } from '../../models/wifiNetwork.model';
 import { NetworkComponent } from "../../components/network/network.component";
 import { interval, take } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wifi-connection',
@@ -12,10 +13,11 @@ import { interval, take } from 'rxjs';
   styleUrl: './wifi-connection.component.scss'
 })
 export class WifiConnectionComponent {
+
   networks: WifiNetwork[] = [];
   loading: boolean = false;
 
-  constructor(private networkService: NetworkService) { }
+  constructor(private networkService: NetworkService, private router: Router) { }
 
   getRandomNum(max: number, min: number = 0): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -23,7 +25,7 @@ export class WifiConnectionComponent {
 
   createNetwork(): WifiNetwork {
     const security: string[] = ['wpa', 'wep', 'wpa2', 'wpa3'];
-    const ssids:string[] = [
+    const ssids: string[] = [
       "FreeWifi_PasGratuit",
       "MotDePasseOublié",
       "ConnexionInterdite",
@@ -44,9 +46,9 @@ export class WifiConnectionComponent {
       "TropTardDéjàConnecté"
     ]
     return {
-      ssid: ssids[this.getRandomNum(ssids.length -1)],
+      ssid: ssids[this.getRandomNum(ssids.length - 1)],
       quality: this.getRandomNum(5).toString(),
-      security: security[this.getRandomNum(security.length -1)]
+      security: security[this.getRandomNum(security.length - 1)]
     }
   }
 
@@ -73,5 +75,9 @@ export class WifiConnectionComponent {
         },
       })
       .unsubscribe();
+  }
+
+  navToNetwork(network: WifiNetwork) {
+    this.router.navigate(['wifi-log', network.ssid], { state: { network: network } })
   }
 }

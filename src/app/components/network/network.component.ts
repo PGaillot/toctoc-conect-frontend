@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WifiNetwork } from '../../models/wifiNetwork.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -18,7 +18,7 @@ const visible = {
   standalone: true,
   imports: [],
   template: `
-  <div @appear class="network">
+  <div @appear class="network" (click)="onClick.next($event)">
     <h3>{{ network.ssid }}</h3>
     <p>quality: {{ network.quality }}</p>
     <p>Security: {{ network.security }}</p>
@@ -39,4 +39,5 @@ const visible = {
 })
 export class NetworkComponent {
   @Input() network!: WifiNetwork;
+  @Output() onClick:EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 }

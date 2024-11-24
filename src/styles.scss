@@ -68,3 +68,16 @@ button{
     cursor: not-allowed;
   }
 }
+
+input{
+  height: 32px;
+  border: none;
+  outline: none;
+  background: #ffd9aa;
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  &:focus{
+    outline: 2px solid $dark-brown;
+  }
+}
