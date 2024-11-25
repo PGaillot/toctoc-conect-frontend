@@ -23,14 +23,12 @@ export class WifiConnectionLogComponent {
     if (navigation?.extras.state?.['network']) {
       this.network = navigation.extras.state['network'];
     } else {
-      console.warn('Aucun réseau Wi-Fi n\'a été fourni via la navigation.');
+      this.router.navigate(['wifi-connection'])
     } 
   }
 
   tryConnection():void{
     const password:string | undefined = this.passwordForm.get('password')?.value;
-    this.router.navigate(['wifi-connection-pending'], {state:{password:password}})
+    this.router.navigate(['wifi-connection-pending'], {state:{password:password, network:this.network}})
   }
-
-
 }

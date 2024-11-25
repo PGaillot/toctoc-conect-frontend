@@ -1,1 +1,14 @@
-<p>wifi-connection-pending works!</p>
+<section>
+    @if (loading$ | async) {
+        <h1>connection en cours ...</h1>
+    } 
+    @else {
+
+        @if(connectionSuccess$ | async){
+            <h1>connection Success !</h1>
+        }
+        @else {
+            <h1>connection Failed !</h1>
+        }
+    }
+</section>
